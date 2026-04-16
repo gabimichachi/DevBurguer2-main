@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+
+{%  block css_adicional %}
+<link rel="stylesheet" href="static/css/produto.css">
+{% endblock %}
+
+{% block conteudo %}
+       <div class="product-container">
+    <div class="image-section">
+
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" alt="Hambúrguer" class="main-img">
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h1 class="product-title">Hambúrguer Classic Dev Gourmet 250g</h1>
+       
+
+        <p class="description">
+            {{produto.descricao}}
+        </p>
+        <a href="#" class="more-details">VER MAIS DETALHES</a>
+
+        <div class="price-container">
+            <div class="old-price">R$ 32,00 {{produto.preco}}</div>
+            <div class="current-price">
+                R$ 25,00 {{produto.preco}} <span class="unit">/un</span>
+            </div>
+        </div>
+
+        <div class="stock-alert">
+            <div class="stock-icon">📍</div>
+            <div class="stock-text">
+                <b>Sentimos Muito!</b>
+                <span>Produto fora da área de entrega para sua localização</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
