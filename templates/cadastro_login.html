@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burger Mania | Acesso</title>
+
     <style>
         :root {
-            --primary-color: #e67e22; /* Laranja/Dourado Burger */
-            --secondary-color: #3d1d11; /* Marrom Grill */
+            --primary-color: #e67e22;
+            --secondary-color: #3d1d11;
             --bg-color: #f4f1ea;
             --white: #ffffff;
         }
@@ -20,7 +21,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
@@ -98,52 +99,73 @@
             text-decoration: underline;
         }
 
-        /* Lógica para alternar telas */
-        #register-form { display: none; }
+        #register-form {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="container">
+
+    <!-- LOGIN -->
     <div id="login-form">
         <h2>🍔 Login</h2>
+
         <form action="#">
             <div class="form-group">
-                <label>Usuário</label>
-                <input type="text" placeholder="Seu usuário" required>
+                <label for="login-usuario">Usuário</label>
+                <input id="login-usuario" name="usuario" type="text" placeholder="Seu usuário" required>
             </div>
+
             <div class="form-group">
-                <label>Senha</label>
-                <input type="password" placeholder="Sua senha" required>
+                <label for="login-senha">Senha</label>
+                <input id="login-senha" name="senha" type="password" placeholder="Sua senha" required>
             </div>
+
             <button type="submit">ENTRAR NO CLUBE</button>
         </form>
-        <a href="#" class="toggle-link" onclick="toggleForm('register')">Não tem conta? Cadastre-se aqui!</a>
+
+        <a href="#" class="toggle-link" onclick="toggleForm(event, 'register')">
+            Não tem conta? Cadastre-se aqui!
+        </a>
     </div>
 
+    <!-- CADASTRO -->
     <div id="register-form">
         <h2>🔥 Cadastro</h2>
+
         <form action="#">
             <div class="form-group">
-                <label>Nome Completo</label>
-                <input type="text" placeholder="Como quer ser chamado?" required>
+                <label for="nome">Nome Completo</label>
+                <input id="nome" name="nome" type="text" placeholder="Como quer ser chamado?" required>
             </div>
+
             <div class="form-group">
-                <label>Usuário</label>
-                <input type="text" placeholder="Crie um usuário" required>
+                <label for="usuario">Usuário</label>
+                <input id="usuario" name="usuario" type="text" placeholder="Crie um usuário" required>
             </div>
+
             <div class="form-group">
-                <label>Senha</label>
-                <input type="password" placeholder="Crie uma senha forte" required>
+                <label for="senha">Senha</label>
+                <input id="senha" name="senha" type="password" placeholder="Crie uma senha forte" required>
             </div>
+
             <button type="submit">FINALIZAR CADASTRO</button>
         </form>
-        <a href="#" class="toggle-link" onclick="toggleForm('login')">Já é de casa? Faça login!</a>
+
+        <a href="#" class="toggle-link" onclick="toggleForm(event, 'login')">
+            Já é de casa? Faça login!
+        </a>
     </div>
+
 </div>
 
 <script>
-    function toggleForm(type) {
+    function toggleForm(event, type) {
+        event.preventDefault(); // impede o link de recarregar a página
+
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
 

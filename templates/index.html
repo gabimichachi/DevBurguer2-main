@@ -2,74 +2,79 @@
 
 {% block conteudo %}
 <!-- Banner -->
-    <section class="banner">
-      <div class="banner__content">
-        <h1 class="banner__title">
-          Code & <span class="banner__title--highlight">Flavor</span>
-        </h1>
-        <p class="banner__subtitle">
-          O melhor hambúrguer da cidade compilado para você.
-        </p>
-      </div>
-    </section>
+<section class="banner">
+  <div class="banner__content">
+    <h1 class="banner__title">
+      Code & <span class="banner__title--highlight">Flavor</span>
+    </h1>
+    <p class="banner__subtitle">
+      O melhor hambúrguer da cidade compilado para você.
+    </p>
+  </div>
+</section>
 
-<!-- Escolha Rápida  -->
-   
-    <section class="categories">
-      <div class="categories__container">
-         {% for destaque in destaques %}
-        <h2 class="categories__title"></h2>
-        
-        <div class="categories__list">
-          <div class="category-item">
-            <img
-              src="{{ destaque.foto }}"
-              alt="{{ destaque.produto }}"
-              class="category-item__img"
-            />
-            
-            <a href="{{ destaque.codigo }}" class="button button--small">EU QUERO</a>
-          </div>
-          {% endfor %}
-      </div>
-    </section>
+<!-- Escolha Rápida -->
+<section class="categories">
+  <div class="categories__container">
     
+    <h2 class="categories__title">Destaques</h2>
+
+    <div class="categories__list">
+      {% for destaque in destaques %}
+      <div class="category-item">
+        <img
+          src="{{ destaque.foto }}"
+          alt="{{ destaque.produto }}"
+          class="category-item__img"
+        />
+
+        <a href="{{ destaque.codigo }}" class="button button--small">
+          EU QUERO
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
 
 <!-- Produtos do Menu -->
-    <section class="products" id="menu">
-      <div class="products__container">
-        <h2 class="products__title">Nosso Cardapio</h2>
+<section class="products" id="menu">
+  <div class="products__container">
+    <h2 class="products__title">Nosso Cardapio</h2>
 
-        <div class="products__grid">
-
-          {% for produto in produtos %}
-          <article class="card" id="lanche-1">
-            <div class="card__image-wrapper">
-              <img
-                src="{{ produto.foto }}"
-                alt="Classic Dev"
-                class="card__image"
-              />
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">{{produto.produto}}</h3>
-              <p class="card__description">
-                {{ produto.descricao }}
-              </p>
-              <div class="card__footer">
-                <span class="card__price">{{ produto.preco }}</span>
-                <button class="button button--small">Comprar</button>
-              </div>
-            </div>
-          </article>
-          {% endfor %}
+    <div class="products__grid">
+      {% for produto in produtos %}
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img
+            src="{{ produto.foto }}"
+            alt="{{ produto.produto }}"
+            class="card__image"
+          />
         </div>
 
-        <div style="text-align: center; margin-top: 40px">
-          <a href="#menu" class="button button--primary"
-            >Voltar para Destaques</a
-          >
+        <div class="card__body">
+          <h3 class="card__title">{{ produto.produto }}</h3>
+
+          <p class="card__description">
+            {{ produto.descricao }}
+          </p>
+
+          <div class="card__footer">
+            <span class="card__price">{{ produto.preco }}</span>
+            <button class="button button--small">Comprar</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 40px">
+      <a href="#menu" class="button button--primary">
+        Voltar para Destaques
+      </a>
+    </div>
+  </div>
+</section>
 {% endblock %}
