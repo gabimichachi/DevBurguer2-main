@@ -1,38 +1,37 @@
-from  database.conexao import conectar
+from database.conexao import conectar
+
+SELECT_BASE = "SELECT codigo, produto, descricao, destaque, preco, foto, disponibilidade FROM Produtos"
 
 def recuperar():
-    # passo 1 e 2 ja feito
-        conexao, cursor = conectar()
+    conexao, cursor = conectar()
 
-        cursor.execute("SELECT codigo, produto, descricao, destaque, preco, foto, disponibilidade FROM Produtos;")
+    cursor.execute(SELECT_BASE)
+    
   
-        #    cursor.execute("SELECT codigo, produto, descricao, preco, foto FROM Produtos")
-
-        #rec os dados
-        produtos =  cursor.fetchall()
-
-        # fechar a conexão
-        conexao.close()
-
-        return produtos
+    produtos = cursor.fetchall()
+    
+    conexao.close()
+    return produtos
 
 def rec_destaq():
-        conexao, cursor = conectar()
+    conexao, cursor = conectar()
 
-        cursor.execute("SELECT codigo, produto, descricao, destaque, preco, foto, disponibilidade FROM Produtos WHERE destaque = True;")
+   
+    query = f"{SELECT_BASE} WHERE destaque = %s"
+    cursor.execute(query, [True])
 
-        produtos =  cursor.fetchall()
+    produtos = cursor.fetchall()
+    conexao.close()
+    return produtos
 
-       # fechar a conexão
-        conexao.close()
+def rec_produto(codigo: int):  
+    conexao, cursor = conectar()
+    
+    query = f"{SELECT_BASE} WHERE codigo = %s"
+    cursor.execute(query, [codigo])
 
-        return produtos
 
-def rec_produto(codigo:int):  
-        conexao, cursor = conectar()
-        cursor.execute("""SELECT codigo, produto, descricao, destaque, preco, foto, disponibilidade FROM Produtos WHERE codigo = %s""", [codigo])
-
-        produto = cursor.fetchone()
-        conexao.close()
-
-        return produto
+    produto = cursor.fetchone()
+    
+    conexao.close()
+    return produto

@@ -1,39 +1,40 @@
-function mostrar_carrinho()
-{
-    const resposta = fetch("http://10.110.134.2:8080/api/get/carrinho")
+async function mostrar_carrinho() {
+    try {
+        const resposta = await fetch("http://10.110.134.2:8080/api/get/carrinho");
 
-    if (resposta.ok) {
-        alert("ERRO AO CARREGAR CARRINHO!")
+        if (!resposta.ok) {
+            alert("ERRO AO CARREGAR CARRINHO!");
+            return;
+        }
 
-    }else{
-        const carrinho = document.getElementById("carrinho")
-
-        carrinho.innerHTML = "";
+        const dados = await resposta.json();
+        const carrinhoContainer = document.getElementById("carrinho");
+        carrinhoContainer.innerHTML = "";
 
         let total = 0;
 
         for (let dado of dados) {
-            total = total + dado.preco
+            total += dado.preco;
 
             let linha = `
-                        teste
-                        <img src = "${dado.imagem}" alt = "hambúrguer" class= "cart-item__image">
-
-                        <div class= "cart-item__info>
-
-                        <!-- TOPO (nome + remover) -->
-                        <div class = "class-item__top">
-                            <h3 class = "cart-item__name" >${dado.nome}</h3>
-                            <button class = "remove-item-btn" title = "remover item">🗑</button>
+                <div class="cart-item">
+                    <img src="${dado.imagem}" alt="${dado.nome}" class="cart-item__image">
+                    <div class="cart-item__info">
+                        <div class="cart-item__top">
+                            <h3 class="cart-item__name">${dado.nome}</h3>
+                            <button class="remove-item-btn" title="remover item">🗑</button>
                         </div>
-
-                        <! -- PARTE DE BAIXO -->
-                        <div class = "cart-item__button">
-                            <span class = "cart-item__price">R$ ${dado.preco}</span>
+                        <div class="cart-item__bottom">
+                            <span class="cart-item__price">R$ ${dado.preco.toFixed(2)}</span>
                         </div>
-                        </div>
-                        `
-            carrinho.innerHTML += linha
+                    </div>
+                </div>
+            `;
+            carrinhoContainer.innerHTML += linha;
         }
+
+    } catch (erro) {
+        console.error(erro);
+        alert("Erro de rede ao carregar o carrinho.");
     }
 }
