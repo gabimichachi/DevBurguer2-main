@@ -7,7 +7,7 @@ class Usuario:
         self.nome = nome
 
     def cadastrar(self):
-        conexao, cursor = conectar
+        conexao, cursor = conectar()
         cursor.execute("""
                         INSERT INTO usuarios (usuario, senha, nome)
                         VALUES (%s, %s, %s);
@@ -17,9 +17,9 @@ class Usuario:
 
     @staticmethod
     def logar(usuario:str, senha:str) -> dict:
-        conexao, cursor = conectar
+        conexao, cursor = conectar()
         cursor.execute("""
-                            SELECT * FROM usuarios WHERE usuario = %s AND senha %s;
+                            SELECT * FROM usuarios WHERE usuario = %s AND senha = %s;
                         """, [usuario, senha])
         resultado = cursor.fetchone()
         conexao.close()

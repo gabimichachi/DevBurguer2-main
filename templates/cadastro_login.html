@@ -108,23 +108,24 @@
 <body>
 
 <div class="container">
-
-    <!-- LOGIN -->
     <div id="login-form">
-        <h2>🍔 Login</h2>
+        <h2>Burger Mania</h2>
+        <p>Bateu a fome? Entre e peça o seu!</p>
 
-        <form action="#">
-            <div class="form-group">
-                <label for="login-usuario">Usuário</label>
-                <input id="login-usuario" name="usuario" type="text" placeholder="Seu usuário" required>
+<link rel="stylesheet" href="{{ url_for('static', filename = '/css/cadastro_login.css') }}" />
+
+        <form method="post" action="/logar/usuario">
+            <div class="input-group">
+                <label>Usuário</label>
+                <input type="text" name="usuario" placeholder="Seu usuário">
             </div>
 
-            <div class="form-group">
-                <label for="login-senha">Senha</label>
-                <input id="login-senha" name="senha" type="password" placeholder="Sua senha" required>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="Sua senha">
             </div>
 
-            <button type="submit">ENTRAR NO CLUBE</button>
+            <button type="submit">ENTRAR</button>
         </form>
 
         <a href="#" class="toggle-link" onclick="toggleForm(event, 'register')">
@@ -132,39 +133,38 @@
         </a>
     </div>
 
-    <!-- CADASTRO -->
-    <div id="register-form">
-        <h2>🔥 Cadastro</h2>
+    <div id="register-form" class="hidden">
+        <h2>Criar Conta</h2>
+        <p>Faça parte do nosso clube do hambúrguer!</p>
 
-        <form action="#">
-            <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input id="nome" name="nome" type="text" placeholder="Como quer ser chamado?" required>
+        <form method="post" action="/cadastrar_usuario">
+            <div class="input-group">
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Ex:Godofredo Frederico Stocoo">
             </div>
 
-            <div class="form-group">
-                <label for="usuario">Usuário</label>
-                <input id="usuario" name="usuario" type="text" placeholder="Crie um usuário" required>
+            <div class="input-group">
+                <label>Usuário</label>
+                <input type="text" name="usuario" placeholder="Escolha um nome de usuário">
             </div>
 
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input id="senha" name="senha" type="password" placeholder="Crie uma senha forte" required>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="Crie uma senha forte">
             </div>
 
-            <button type="submit">FINALIZAR CADASTRO</button>
+            <button type="submit">CADASTRAR</button>
         </form>
 
-        <a href="#" class="toggle-link" onclick="toggleForm(event, 'login')">
-            Já é de casa? Faça login!
+        <a href="#" class="toggle-link" onclick="toggleForm(event, 'register')">
+            Não tem conta? Cadastre-se aqui!
         </a>
     </div>
-
 </div>
 
 <script>
     function toggleForm(event, type) {
-        event.preventDefault(); // impede o link de recarregar a página
+        event.preventDefault();
 
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
@@ -178,6 +178,3 @@
         }
     }
 </script>
-
-</body>
-</html>

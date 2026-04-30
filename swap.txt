@@ -1,0 +1,71 @@
+<div class="container">
+    <div id="login-form">
+        <h2>Burger Mania</h2>
+        <p>Bateu a fome? Entre e peça o seu!</p>
+
+<link rel="stylesheet" href="{{ url_for('static', filename = '/css/cadastro_login.css') }}" />
+
+        <form method="post" action="/logar/usuario">
+            <div class="input-group">
+                <label>Usuário</label>
+                <input type="text" name="usuario" placeholder="Seu usuário">
+            </div>
+
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="Sua senha">
+            </div>
+
+            <button type="submit">ENTRAR</button>
+        </form>
+
+        <a href="#" class="toggle-link" onclick="toggleForm(event, 'register')">
+            Não tem conta? Cadastre-se aqui!
+        </a>
+    </div>
+
+    <div id="register-form" class="hidden">
+        <h2>Criar Conta</h2>
+        <p>Faça parte do nosso clube do hambúrguer!</p>
+
+        <form method="post" action="/cadastrar_usuario">
+            <div class="input-group">
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Ex: João Silva">
+            </div>
+
+            <div class="input-group">
+                <label>Usuário</label>
+                <input type="text" name="usuario" placeholder="Escolha um nome de usuário">
+            </div>
+
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="Crie uma senha forte">
+            </div>
+
+            <button type="submit">CADASTRAR</button>
+        </form>
+
+        <a href="#" class="toggle-link" onclick="toggleForm(event, 'register')">
+            Não tem conta? Cadastre-se aqui!
+        </a>
+    </div>
+</div>
+
+<script>
+    function toggleForm(event, type) {
+        event.preventDefault(); // impede o link de recarregar a página
+
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        if (type === 'register') {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        } else {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+    }
+</script>
