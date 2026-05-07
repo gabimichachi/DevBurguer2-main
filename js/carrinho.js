@@ -38,3 +38,32 @@ async function mostrar_carrinho() {
         alert("Erro de rede ao carregar o carrinho.");
     }
 }
+
+mostrar_carrinho()
+
+
+async function inserirItemCarrinho(cod_produto, quantidade=1) {
+    const resposta = await fetch("/api/post/item_carrinho",
+                            {
+                                method: "POST",
+                                headers: {
+                                            "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(
+                                                        {
+                                                            "cod_produto": cod_produto,
+                                                            "quantidade": quantidade
+                                                        }
+
+                                )
+                            }
+                        )
+
+if (!resposta.OK)
+    {
+        alert("Erro ao inserir item!")
+    }
+
+    mostrar_carrinho();
+    
+}

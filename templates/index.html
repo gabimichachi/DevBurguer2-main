@@ -14,7 +14,7 @@
 
 <section class="categories" id="destaques"> <div class="categories__container">
     
-    <h2 class="categories__title">Destaques</h2>
+    <h2 class="categories__title">Escolha Rapida</h2>
 
     <div class="categories__list">
       {% for destaque in destaques %}
@@ -24,7 +24,6 @@
           alt="{{ destaque.produto }}"
           class="category-item__img"
         />
-        {# Ajustado o link para uma rota hipotética de produto #}
         <a href="/produto/{{ destaque.codigo }}" class="button button--small">
           EU QUERO
         </a>
