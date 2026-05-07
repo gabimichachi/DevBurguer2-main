@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevBurger - Flex & Grid 2026</title> <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>DevBurger - Flex & Grid 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -22,6 +26,7 @@
     {% block css_adicional %}
     {% endblock %}
   </head>
+
   <body>
 
     <header class="header">
@@ -33,12 +38,15 @@
             <li class="header__item">
               <a href="/" class="header__link">Home</a>
             </li>
+
             <li class="header__item">
               <a href="#menu" class="header__link">Cardápio</a>
             </li>
+
             <li class="header__item">
               <a href="#" class="header__link">Sobre</a>
             </li>
+
             <li class="header__item">
               <a href="#" class="header__link">Contato</a>
             </li>
@@ -49,6 +57,7 @@
           <a href="#" class="header__icon" title="Facebook">
             <span class="material-symbols-outlined">thumb_up</span>
           </a>
+
           <a href="#" class="header__icon" title="Instagram">
             <span class="material-symbols-outlined">photo_camera</span>
           </a>
@@ -59,8 +68,38 @@
         </button>
       </div>
     </header>
-    
-    <main> {% block conteudo %} {% endblock %}
+
+    <!-- LAYOUT PRINCIPAL -->
+    <main class="layout">
+
+      <!-- CONTEÚDO -->
+      <section class="content">
+        {% block conteudo %}
+        {% endblock %}
+      </section>
+
+      <!-- SIDEBAR DO CARRINHO -->
+      <aside class="cart-sidebar">
+        <h3>Seu Pedido 🛒</h3>
+
+        <ul id="cart-items">
+          <!-- itens adicionados -->
+        </ul>
+
+        <div class="cart-footer">
+          <p>
+            Total:
+            <strong>
+              R$ <span id="cart-total">0.00</span>
+            </strong>
+          </p>
+
+          <button class="btn-finish" onclick="checkout()">
+            Finalizar Pedido
+          </button>
+        </div>
+      </aside>
+
     </main>
 
     <footer class="footer">
@@ -69,7 +108,8 @@
       </p>
     </footer>
 
-    {# Espaço para scripts se precisar no futuro #}
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    {% endblock %}
+
   </body>
 </html>
