@@ -7,7 +7,6 @@
 {% block conteudo %}
 <div class="product-container">
     <div class="image-section">
-        {# Imagem agora é dinâmica #}
         <img src="{{ produto.foto }}" alt="{{ produto.produto }}" class="main-img">
         
         <div class="dots">
@@ -18,7 +17,6 @@
     </div>
 
     <div class="info-section">
-        {# Título dinâmico #}
         <h1 class="product-title">{{ produto.produto }}</h1>
 
         <p class="description">
@@ -28,7 +26,6 @@
         <a href="#" class="more-details">VER MAIS DETALHES</a>
 
         <div class="price-container">
-            {# Removi os valores fixos "R$ 32,00" para não repetir #}
             {% if produto.preco_antigo %}
                 <div class="old-price">R$ {{ produto.preco_antigo }}</div>
             {% endif %}
@@ -37,8 +34,6 @@
                 R$ {{ produto.preco }} <span class="unit">/un</span>
             </div>
         </div>
-
-        {# Alerta de estoque/entrega #}
         <div class="stock-alert">
             <div class="stock-icon">📍</div>
             <div class="stock-text">
@@ -47,7 +42,6 @@
             </div>
         </div>
         
-        {# Sugestão: Adicione um botão de compra aqui, já que é a página do produto #}
         <div class="product-actions" style="margin-top: 20px;">
             <button class="button button--primary">ADICIONAR AO CARRINHO</button>
         </div>
